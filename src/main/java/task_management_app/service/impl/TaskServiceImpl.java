@@ -42,4 +42,31 @@ public class TaskServiceImpl implements TaskService {
                 .map(taskMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<TaskDTO> getAllTasks() {
+        return taskRepository.findAll().stream()
+                .map(taskMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public TaskDTO updateTask(Long taskId, TaskDTO taskDTO) {
+        // Buscar la tarea por ID
+        TaskEntity taskEntity = taskRepository.findById(taskId)
+                .orElseThrow(() -> new IllegalArgumentException("Task not found"));
+
+        // Actualizar los campos permitidos
+        taskEntity.setTitle(taskDTO.getTitle());
+        taskEntity.setDescription(taskDTO.getDescription());
+        taskEntity.setColumn(columnRepository.findById(taskDTO.getColumnId())
+                .orElseThrow(() -> new IllegalArgumentException("Column not found")));
+
+        // Guardar los cambios
+        TaskEntity updatedTask = taskRepository.save(taskEntity);
+
+        // Convertir la entidad actualizada a DTO y devolverla
+        return taskMapper.toDTO(updatedTask);
+    }
+
 }

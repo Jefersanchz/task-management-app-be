@@ -27,4 +27,16 @@ public class TaskController {
     public ResponseEntity<List<TaskDTO>> getTasksByColumn(@PathVariable Long columnId) {
         return ResponseEntity.ok(taskService.getTasksByColumn(columnId));
     }
+
+    @GetMapping(PathGeneric.PATH_GET_ALL_TASKS)
+    public ResponseEntity<List<TaskDTO>> getAllTasks() {
+        return ResponseEntity.ok(taskService.getAllTasks());
+    }
+
+    @PutMapping(PathGeneric.PATH_UPDATE_TASK)
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable Long taskId, @RequestBody TaskDTO taskDTO) {
+        TaskDTO updatedTask = taskService.updateTask(taskId, taskDTO);
+        return ResponseEntity.ok(updatedTask);
+    }
+
 }
