@@ -2,13 +2,21 @@ package task_management_app.constant;
 
 public class PathGeneric {
 
-    public static final String PATH_API_ORDER = "/api/orders";
-    public static final String PATH_API_PRODUCT = "/api/products";
+    // General
     public static final String PATH_ID = "/{id}";
-    public static final String PATH_DATE = "/date";
-    public static final String PATH_RANGE_DATE = "/date-range";
-    public static final String PATH_PRODUCT_PRODUCT_ID = "/product/{productId}";
-    public static final String PATH_QUANTITY = "/quantity";
-    public static final String PATH_TOTAL_SALES = "/total-sales";
-
+    
+    // Board Endpoints
+    public static final String PATH_API_BOARDS = "/api/boards";
+    public static final String PATH_CREATE_BOARD = "/create/{ownerId}";
+    public static final String PATH_GET_BOARDS_BY_OWNER = "/{ownerId}";
+    
+    // Column Endpoints
+    public static final String PATH_API_COLUMNS = "/api/columns";
+    public static final String PATH_CREATE_COLUMN = "/create/{boardId}";
+    public static final String PATH_GET_COLUMNS_BY_BOARD = "/{boardId}";
+    
+    // Task Endpoints
+    public static final String PATH_API_TASKS = "/api/tasks";
+    public static final String PATH_CREATE_TASK = "/create/{columnId}";
+    public static final String PATH_GET_TASKS_BY_COLUMN = "/{columnId}";
 }

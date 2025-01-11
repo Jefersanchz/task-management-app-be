@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users", uniqueConstraints = {
     @UniqueConstraint(columnNames = "username")
@@ -26,6 +28,9 @@ public class UserEntity {
     private String username;
 
     private String password;
+
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BoardEntity> boards;
 
     @Builder
     public UserEntity(Long id, String firstName, String lastName, String username, String password) {
