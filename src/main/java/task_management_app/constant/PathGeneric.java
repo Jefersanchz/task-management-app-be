@@ -9,7 +9,8 @@ public class PathGeneric {
     public static final String PATH_API_BOARDS = "/api/boards";
     public static final String PATH_CREATE_BOARD = "/create/{ownerId}";
     public static final String PATH_GET_BOARDS_BY_OWNER = "/{ownerId}";
-    
+    public static final String PATH_UPDATE_BOARD = "/update/{boardId}";
+    public static final String PATH_DELETE_BOARD = "/deleteByOwner/{ownerId}";
     // Column Endpoints
     public static final String PATH_API_COLUMNS = "/api/columns";
     public static final String PATH_CREATE_COLUMN = "/create/{boardId}";

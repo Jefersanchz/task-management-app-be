@@ -55,6 +55,34 @@ public class BoardServiceImpl implements BoardService {
                 })
                 .collect(Collectors.toList());
     }
+    @Override
+    public BoardDTO updateBoard(Long boardId, BoardDTO boardDTO) {
+        BoardEntity boardEntity = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+
+        boardEntity.setName(boardDTO.getName());
+        boardEntity.setDescription(boardDTO.getDescription());
+
+        BoardEntity updatedBoard = boardRepository.save(boardEntity);
+
+        BoardDTO updatedBoardDTO = new BoardDTO();
+        updatedBoardDTO.setId(updatedBoard.getId());
+        updatedBoardDTO.setName(updatedBoard.getName());
+        updatedBoardDTO.setDescription(updatedBoard.getDescription());
+        updatedBoardDTO.setOwnerId(updatedBoard.getOwner().getId());
+
+        return updatedBoardDTO;
+    }
+
+    @Override
+    public void deleteBoardsByOwner(Long ownerId) {
+        List<BoardEntity> boards = boardRepository.findByOwnerId(ownerId);
+        if (boards.isEmpty()) {
+            throw new IllegalArgumentException("No boards found for this user");
+        }
+        boardRepository.deleteAll(boards);
+    }
+    
 }
 
 

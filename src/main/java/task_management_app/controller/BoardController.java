@@ -28,4 +28,18 @@ public class BoardController {
     public ResponseEntity<List<BoardDTO>> getBoardsByOwner(@PathVariable Long ownerId) {
         return ResponseEntity.ok(boardService.getBoardsByOwner(ownerId));
     }
+
+    @PutMapping(PathGeneric.PATH_UPDATE_BOARD) 
+    public ResponseEntity<BoardDTO> updateBoard(@PathVariable Long boardId, @RequestBody BoardDTO boardDTO) {
+        BoardDTO updatedBoard = boardService.updateBoard(boardId, boardDTO);
+        return ResponseEntity.ok(updatedBoard);
+    }
+    
+    @DeleteMapping(PathGeneric.PATH_DELETE_BOARD)
+public ResponseEntity<Void> deleteBoardsByOwner(@PathVariable Long ownerId) {
+    boardService.deleteBoardsByOwner(ownerId);
+    return ResponseEntity.noContent().build();
+}
+
+    
 }

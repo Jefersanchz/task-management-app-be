@@ -7,4 +7,7 @@ import java.util.List;
 public interface BoardService {
     BoardDTO createBoard(BoardDTO boardDTO, Long ownerId);
     List<BoardDTO> getBoardsByOwner(Long ownerId);
+    BoardDTO updateBoard(Long boardId, BoardDTO boardDTO);
+    void deleteBoardsByOwner(Long ownerId);
+  
 }
