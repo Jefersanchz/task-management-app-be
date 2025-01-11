@@ -36,11 +36,15 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody UserLoginDTO loginDTO) {
         return userService.login(loginDTO.getUsername(), loginDTO.getPassword())
-                .map(u -> {
+                .map(userDTO -> {
                     Map<String, String> response = new HashMap<>();
                     response.put("message", "Login successful");
+                    response.put("username", userDTO.getUsername());
+                    response.put("firstName", userDTO.getFirstName());
+                    response.put("lastName", userDTO.getLastName());
                     return ResponseEntity.ok(response);
                 })
                 .orElse(ResponseEntity.status(401).body(Map.of("error", "Incorrect username or password")));
     }
+    
 }
