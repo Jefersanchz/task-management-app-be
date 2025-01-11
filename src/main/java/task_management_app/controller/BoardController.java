@@ -17,7 +17,6 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-   
     @PostMapping(PathGeneric.PATH_CREATE_BOARD)
     public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO boardDTO) {
         BoardDTO createdBoard = boardService.createBoard(boardDTO, boardDTO.getOwnerId());
@@ -29,17 +28,22 @@ public class BoardController {
         return ResponseEntity.ok(boardService.getBoardsByOwner(ownerId));
     }
 
-    @PutMapping(PathGeneric.PATH_UPDATE_BOARD) 
+    @PutMapping(PathGeneric.PATH_UPDATE_BOARD)
     public ResponseEntity<BoardDTO> updateBoard(@PathVariable Long boardId, @RequestBody BoardDTO boardDTO) {
         BoardDTO updatedBoard = boardService.updateBoard(boardId, boardDTO);
         return ResponseEntity.ok(updatedBoard);
     }
-    
-    @DeleteMapping(PathGeneric.PATH_DELETE_BOARD)
-public ResponseEntity<Void> deleteBoardsByOwner(@PathVariable Long ownerId) {
-    boardService.deleteBoardsByOwner(ownerId);
-    return ResponseEntity.noContent().build();
-}
 
-    
+    @DeleteMapping(PathGeneric.PATH_DELETE_BOARD)
+    public ResponseEntity<Void> deleteBoardsByOwner(@PathVariable Long ownerId) {
+        boardService.deleteBoardsByOwner(ownerId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(PathGeneric.PATH_DELETE_SPECIFIC_BOARD)
+    public ResponseEntity<Void> deleteBoard(@PathVariable Long boardId, @PathVariable Long ownerId) {
+        boardService.deleteSpecificBoard(boardId, ownerId);
+        return ResponseEntity.noContent().build();
+    }
+
 }

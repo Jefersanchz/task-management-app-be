@@ -9,5 +9,6 @@ public interface BoardService {
     List<BoardDTO> getBoardsByOwner(Long ownerId);
     BoardDTO updateBoard(Long boardId, BoardDTO boardDTO);
     void deleteBoardsByOwner(Long ownerId);
+    void deleteSpecificBoard(Long boardId, Long ownerId);
   
 }

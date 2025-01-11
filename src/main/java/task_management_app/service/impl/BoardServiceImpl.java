@@ -55,6 +55,7 @@ public class BoardServiceImpl implements BoardService {
                 })
                 .collect(Collectors.toList());
     }
+
     @Override
     public BoardDTO updateBoard(Long boardId, BoardDTO boardDTO) {
         BoardEntity boardEntity = boardRepository.findById(boardId)
@@ -82,7 +83,17 @@ public class BoardServiceImpl implements BoardService {
         }
         boardRepository.deleteAll(boards);
     }
-    
+
+    @Override
+    public void deleteSpecificBoard(Long boardId, Long ownerId) {
+        BoardEntity boardEntity = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("Board not found"));
+
+        if (!boardEntity.getOwner().getId().equals(ownerId)) {
+            throw new IllegalArgumentException("Board does not belong to the specified owner");
+        }
+
+        boardRepository.delete(boardEntity);
+    }
+
 }
-
-
