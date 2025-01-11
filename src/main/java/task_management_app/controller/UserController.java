@@ -42,6 +42,7 @@ public class UserController {
                     response.put("username", userDTO.getUsername());
                     response.put("firstName", userDTO.getFirstName());
                     response.put("lastName", userDTO.getLastName());
+                    response.put("id", userDTO.getId().toString());
                     return ResponseEntity.ok(response);
                 })
                 .orElse(ResponseEntity.status(401).body(Map.of("error", "Incorrect username or password")));
