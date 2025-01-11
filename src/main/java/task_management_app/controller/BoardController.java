@@ -17,9 +17,10 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+   
     @PostMapping(PathGeneric.PATH_CREATE_BOARD)
-    public ResponseEntity<BoardDTO> createBoard(@PathVariable Long ownerId, @RequestBody BoardDTO boardDTO) {
-        BoardDTO createdBoard = boardService.createBoard(boardDTO, ownerId);
+    public ResponseEntity<BoardDTO> createBoard(@RequestBody BoardDTO boardDTO) {
+        BoardDTO createdBoard = boardService.createBoard(boardDTO, boardDTO.getOwnerId());
         return ResponseEntity.ok(createdBoard);
     }
 
