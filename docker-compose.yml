@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  task-management:
+    build: .
+    ports:
+      - "9000:9000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database-2-instance-1.cxim24osuagg.us-east-2.rds.amazonaws.com:3306/taskmanagement
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: task-management
