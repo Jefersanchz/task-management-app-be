@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>task-management-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>task-management-app</name>
 	<description>gestión de tareas colaborativas</description>
 	<url/>
