@@ -36,6 +36,30 @@ La aplicación utiliza Springdoc OpenAPI para generar documentación automática
 2. En la interfaz de Swagger, encontrarás la documentación de todos los endpoints disponibles.
 3. Haz clic en **Try it out** junto a cada endpoint para probarlo directamente desde la interfaz de Swagger.
 
+## Base de datos local
+spring.datasource.url=jdbc:mysql://localhost:3306/taskmanagement
+## Base de datos produccion
+spring.application.name=task-management-app
+spring.datasource.url=jdbc:mysql://database-2-instance-1.cxim24osuagg.us-east-2.rds.amazonaws.com:3306/taskmanagement
+spring.datasource.username=admin
+spring.datasource.password=task-management
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Configuración de JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+
+# Configuración de Swagger
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/task-management
+server.port= 9000
+# Puerto del servidor
+server.port=9000
+# Documentación backend
+http://ec2-3-149-251-150.us-east-2.compute.amazonaws.com:9000/swagger-ui/index.html#/
+
 ### Endpoints Disponibles
 
 
