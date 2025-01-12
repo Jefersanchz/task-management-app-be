@@ -9,6 +9,8 @@ public interface TaskService {
     List<TaskDTO> getTasksByColumn(Long columnId);
     List<TaskDTO> getAllTasks();
     TaskDTO updateTask(Long taskId, TaskDTO taskDTO);
+    void deleteTask(Long taskId);
+
 
 
 }

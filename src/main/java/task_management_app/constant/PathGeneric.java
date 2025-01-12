@@ -26,5 +26,7 @@ public class PathGeneric {
     public static final String PATH_GET_ALL_TASKS = "/all";
     // Ruta para actualizar una tarea específica
     public static final String PATH_UPDATE_TASK = "/update/{taskId}";
+    public static final String PATH_DELETE_TASK = "/delete/{taskId}";
+    
 
 }

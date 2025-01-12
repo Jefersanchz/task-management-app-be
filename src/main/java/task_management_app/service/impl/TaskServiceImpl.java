@@ -69,4 +69,12 @@ public class TaskServiceImpl implements TaskService {
         return taskMapper.toDTO(updatedTask);
     }
 
+    @Override
+    public void deleteTask(Long taskId) {
+        TaskEntity taskEntity = taskRepository.findById(taskId)
+                .orElseThrow(() -> new IllegalArgumentException("Task not found"));
+
+        taskRepository.delete(taskEntity);
+    }
+
 }
