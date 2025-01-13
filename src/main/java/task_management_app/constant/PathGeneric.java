@@ -12,6 +12,7 @@ public class PathGeneric {
     public static final String PATH_UPDATE_BOARD = "/update/{boardId}";
     public static final String PATH_DELETE_BOARD = "/deleteByOwner/{ownerId}";
     public static final String PATH_DELETE_SPECIFIC_BOARD = "/delete/{boardId}/{ownerId}";
+    public static final String PATH_EXPORT_DATA_BOARD ="/export/{ownerId}";
 
     // Column Endpoints
     public static final String PATH_API_COLUMNS = "/api/columns";

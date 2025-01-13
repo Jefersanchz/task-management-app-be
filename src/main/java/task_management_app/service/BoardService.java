@@ -2,7 +2,7 @@ package task_management_app.service;
 
 import task_management_app.dto.BoardDTO;
 
-import java.util.List;
+import java.util.*;
 
 public interface BoardService {
     BoardDTO createBoard(BoardDTO boardDTO, Long ownerId);
@@ -10,5 +10,6 @@ public interface BoardService {
     BoardDTO updateBoard(Long boardId, BoardDTO boardDTO);
     void deleteBoardsByOwner(Long ownerId);
     void deleteSpecificBoard(Long boardId, Long ownerId);
+    Map<String, Object> exportBoardsWithDetails(Long ownerId);
   
 }
