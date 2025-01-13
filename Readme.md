@@ -76,6 +76,7 @@ http://ec2-3-149-251-150.us-east-2.compute.amazonaws.com:9000/swagger-ui/index.h
 - `PUT /api/boards/update/{boardId}`: Actualiza un tablero por ID y usuario.
 - `DELETE /api/boards/deleteByOwner/{ownerId}`: Elimina todos los tableros por ID usuario.
 - `DELETE /api/boards/delete/{boardId}/{ownerId}`Elimina un tablero en especifico por ID de tablero y ID del usuario
+- `GET /api/boards/export/{ownerId}}`: Permite descargar la información de los tableros en formato Json.
 
 #### Columns (Columnas)
 
