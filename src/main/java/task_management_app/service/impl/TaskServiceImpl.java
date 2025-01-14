@@ -51,23 +51,27 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public TaskDTO updateTask(Long taskId, TaskDTO taskDTO) {
-        // Buscar la tarea por ID
-        TaskEntity taskEntity = taskRepository.findById(taskId)
-                .orElseThrow(() -> new IllegalArgumentException("Task not found"));
+public TaskDTO updateTask(Long taskId, TaskDTO taskDTO) {
+    TaskEntity taskEntity = taskRepository.findById(taskId)
+            .orElseThrow(() -> new IllegalArgumentException("Task not found"));
 
-        // Actualizar los campos permitidos
+    if (taskDTO.getTitle() != null) {
         taskEntity.setTitle(taskDTO.getTitle());
-        taskEntity.setDescription(taskDTO.getDescription());
-        taskEntity.setColumn(columnRepository.findById(taskDTO.getColumnId())
-                .orElseThrow(() -> new IllegalArgumentException("Column not found")));
-
-        // Guardar los cambios
-        TaskEntity updatedTask = taskRepository.save(taskEntity);
-
-        // Convertir la entidad actualizada a DTO y devolverla
-        return taskMapper.toDTO(updatedTask);
     }
+    if (taskDTO.getDescription() != null) {
+        taskEntity.setDescription(taskDTO.getDescription());
+    }
+    if (taskDTO.getColumnId() != null) {
+        ColumnEntity column = columnRepository.findById(taskDTO.getColumnId())
+                .orElseThrow(() -> new IllegalArgumentException("Column not found"));
+        taskEntity.setColumn(column);
+    }
+
+    TaskEntity updatedTask = taskRepository.save(taskEntity);
+
+    return taskMapper.toDTO(updatedTask);
+}
+
 
     @Override
     public void deleteTask(Long taskId) {
