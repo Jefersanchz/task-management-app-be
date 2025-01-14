@@ -5,7 +5,7 @@ import org.mapstruct.factory.Mappers;
 import task_management_app.dto.ColumnDTO;
 import task_management_app.entity.ColumnEntity;
 
-@Mapper
+@Mapper(uses = TaskMapper.class)
 public interface ColumnMapper {
     ColumnMapper INSTANCE = Mappers.getMapper(ColumnMapper.class);
 

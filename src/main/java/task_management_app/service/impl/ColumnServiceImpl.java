@@ -9,7 +9,7 @@ import task_management_app.mapper.ColumnMapper;
 import task_management_app.repository.BoardRepository;
 import task_management_app.repository.ColumnRepository;
 import task_management_app.service.ColumnService;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +31,7 @@ public class ColumnServiceImpl implements ColumnService {
 
         ColumnEntity columnEntity = columnMapper.toEntity(columnDTO);
         columnEntity.setBoard(board);
+        columnEntity.setTasks(new ArrayList<>());
         ColumnEntity savedColumn = columnRepository.save(columnEntity);
 
         return columnMapper.toDTO(savedColumn);
